@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
+import Category from "../../Pages/Category/Category";
 import Course from "../../Pages/Course/Course";
+import CourseCard from "../../Pages/CourseCard/CourseCard";
 import Home from "../../Pages/Home/Home";
-import RightSideCourseCategory from "../../Pages/RightSideCourseCategory/RightSideCourseCategory";
+import Login from "../../Pages/Login/Login/Login";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 
 export const routes = createBrowserRouter([
@@ -16,16 +18,22 @@ export const routes = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/home",
-        element: <Home></Home>,
-      },
-      {
-        path: "/courseCategory/:id",
-        element: <RightSideCourseCategory></RightSideCourseCategory>,
-      },
-      {
         path: "/course",
         element: <Course></Course>,
+      },
+      {
+        path: "/category/:id",
+        element: <Category></Category>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.id}`),
+      },
+      {
+        path: "/courseCard/:id",
+        element: <CourseCard></CourseCard>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
     ],
   },

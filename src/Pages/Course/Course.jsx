@@ -1,5 +1,5 @@
 import React from "react";
-import RightSideCourseCategory from "../RightSideCourseCategory/RightSideCourseCategory";
+import Category from "../Category/Category";
 import LeftSideCategoryNav from "../Shared/LeftSideCategoryNav/LeftSideCategoryNav";
 
 const Course = () => {
@@ -9,7 +9,7 @@ const Course = () => {
         <LeftSideCategoryNav></LeftSideCategoryNav>
       </div>
       <div className="w-full lg:w-3/4">
-        <RightSideCourseCategory></RightSideCourseCategory>
+        <Category></Category>
       </div>
     </div>
   );
