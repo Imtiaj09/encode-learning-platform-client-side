@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -38,7 +41,18 @@ const Header = () => {
             Blog
           </Link>
           <Link href="#" className="mr-5 hover:text-gray-900">
-            name
+            {user?.displayName}
+          </Link>
+          <Link href="#" className="mr-5 hover:text-gray-900">
+            {/* {user.photoURL ? (
+              <image
+                style={{ hight: "40px" }}
+                className="rounded-full"
+                src={user.photoURL}
+              ></image>
+            ) : (
+              <FaUser></FaUser>
+            )} */}
           </Link>
 
           <Link to="/login" className="mr-5 hover:text-gray-900">
