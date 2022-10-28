@@ -1,13 +1,10 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
 
-const Category = () => {
-  const category = useLoaderData();
-  const { image_url, title, details, _id } = category;
-
+const Premium = () => {
   return (
-    <div className="card  bg-base-100 shadow-xl">
-      <figure>
+    <div>
+      <h1>hello</h1>
+      {/* <figure>
         <img src={image_url} alt="Shoes" />
       </figure>
       <div className="card-body">
@@ -15,13 +12,13 @@ const Category = () => {
         <p>{details}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Download</button>
-          <Link to={`/course/${_id}`}>
+          <Link to={`/singleCourse/${_id}`}>
             <button className="btn btn-primary">Check Out</button>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default Category;
+export default Premium;

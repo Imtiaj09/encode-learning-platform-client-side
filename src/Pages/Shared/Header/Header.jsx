@@ -66,16 +66,7 @@ const Header = () => {
               </>
             )}
           </Link>
-          <Link href="#" className="mr-5 hover:text-gray-900">
-            {/* {user.photoURL ? (
-              <image
-                className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
-                src={user.photoURL}
-              ></image>
-            ) : (
-              <FaUser></FaUser>
-            )} */}
-          </Link>
+          <Link href="#" className="mr-5 hover:text-gray-900"></Link>
         </nav>
       </div>
     </header>

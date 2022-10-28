@@ -14,7 +14,7 @@ const Card = ({ category }) => {
         </div>
       </div>
       <Link to={`/singleCourse/${category._id}`}>
-        <button className="bg-red-500 ">Detail</button>
+        <button className="bg-red-500">Detail</button>
       </Link>
     </div>
   );

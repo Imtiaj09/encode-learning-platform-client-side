@@ -21,7 +21,7 @@ const LeftSideCategoryNav = () => {
         <div>
           {categories.map((category) => (
             <p className="text-base mt-4" key={category.id}>
-              <Link to={`/category/${category.id}`}>{category.title}</Link>
+              <Link to={`/singleCourse/${category._id}`}>{category.title}</Link>
             </p>
           ))}
         </div>
