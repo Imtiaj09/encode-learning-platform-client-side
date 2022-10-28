@@ -14,8 +14,8 @@ const Category = () => {
         <h2 className="card-title">{title}</h2>
         <p>{details}</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+          <button className="btn btn-primary">Download</button>
+          <button className="btn btn-primary">Check Out</button>
         </div>
       </div>
     </div>

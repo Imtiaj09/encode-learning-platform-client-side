@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Category from "../../Pages/Category/Category";
 import Course from "../../Pages/Course/Course";
-import CourseCard from "../../Pages/CourseCard/CourseCard";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
+import Register from "../../Pages/Login/Register/Register";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 
 export const routes = createBrowserRouter([
@@ -28,12 +28,12 @@ export const routes = createBrowserRouter([
           fetch(`http://localhost:5000/singleCourse/${params.id}`),
       },
       {
-        path: "/courseCard/:id",
-        element: <CourseCard></CourseCard>,
-      },
-      {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

@@ -4,7 +4,14 @@ import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -41,22 +48,33 @@ const Header = () => {
             Blog
           </Link>
           <Link href="#" className="mr-5 hover:text-gray-900">
-            {user?.displayName}
+            {user?.uid ? (
+              <>
+                <span>{user?.displayName}</span>
+                <button onClick={handleLogOut} className="btn">
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="mr-5 hover:text-gray-900">
+                  Login
+                </Link>
+                <Link to="/register" className="mr-5 hover:text-gray-900">
+                  Register
+                </Link>
+              </>
+            )}
           </Link>
           <Link href="#" className="mr-5 hover:text-gray-900">
             {/* {user.photoURL ? (
               <image
-                style={{ hight: "40px" }}
-                className="rounded-full"
+                className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
                 src={user.photoURL}
               ></image>
             ) : (
               <FaUser></FaUser>
             )} */}
-          </Link>
-
-          <Link to="/login" className="mr-5 hover:text-gray-900">
-            Login
           </Link>
         </nav>
       </div>

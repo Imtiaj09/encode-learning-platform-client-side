@@ -1,30 +1,26 @@
-import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
-const Login = () => {
-  const { providerLogin } = useContext(AuthContext);
+const Register = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  const googleProvider = new GoogleAuthProvider();
-
-  const handleGoogleSignIn = () => {
-    providerLogin(googleProvider)
-      .then((result) => {
-        const user = result.user;
-        // console.log(user);
-      })
-      .catch((error) => console.log(error));
+    console.log(name, photoURL, email, password);
   };
 
   return (
-    <div className="flex justify-center items-center pt-8">
+    <div
+      onSubmit={handleSubmit}
+      className="flex justify-center items-center pt-8"
+    >
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Sign in</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to access your account
-          </p>
+          <h1 className="my-3 text-4xl font-bold">Register</h1>
+          <p className="text-sm text-gray-400">Create a new account</p>
         </div>
         <form
           noValidate=""
@@ -32,6 +28,32 @@ const Login = () => {
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block mb-2 text-sm">
+                Your Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter Your Name Here"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="name" className="block mb-2 text-sm">
+                Photo URL
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                id="email"
+                placeholder="Enter Your Photo URl Here"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
@@ -41,6 +63,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Enter Your Email Here"
+                required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
@@ -56,6 +79,7 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="*******"
+                required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
               />
             </div>
@@ -66,7 +90,7 @@ const Login = () => {
               type="submit"
               className="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
             >
-              Sign in
+              Sign Up
             </button>
           </div>
         </form>
@@ -81,11 +105,7 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button
-            onClick={handleGoogleSignIn}
-            aria-label="Log in with Google"
-            className="p-3 rounded-sm"
-          >
+          <button aria-label="Log in with Google" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -116,4 +136,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
