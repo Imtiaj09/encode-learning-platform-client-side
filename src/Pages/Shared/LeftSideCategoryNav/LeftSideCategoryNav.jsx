@@ -8,7 +8,7 @@ const LeftSideCategoryNav = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/course")
+    fetch("https://encode-server-brown.vercel.app/course")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

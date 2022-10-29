@@ -29,7 +29,9 @@ export const routes = createBrowserRouter([
         path: "/singleCourse/:id",
         element: <Category></Category>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singleCourse/${params.id}`),
+          fetch(
+            `https://encode-server-brown.vercel.app/singleCourse/${params.id}`
+          ),
       },
       {
         path: "/course/:id",
@@ -39,7 +41,7 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(`https://encode-server-brown.vercel.app/course/${params.id}`),
       },
       {
         path: "/blog",
