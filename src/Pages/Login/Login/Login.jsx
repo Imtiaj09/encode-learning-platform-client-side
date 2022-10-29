@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
@@ -10,6 +10,9 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const { providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/course";
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -24,7 +27,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         setError("");
-        navigate("/course");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -130,10 +133,9 @@ const Login = () => {
         </div>
         <p className="px-6 text-sm text-center text-gray-400">
           Don't have an account yet?{" "}
-          <a href="#" to="/register" className="hover:underline text-gray-600">
+          <Link to="/register" className="hover:underline text-gray-600">
             Sign up
-          </a>
-          .
+          </Link>
         </p>
       </div>
     </div>

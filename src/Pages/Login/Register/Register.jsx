@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Register = () => {
@@ -126,9 +127,9 @@ const Register = () => {
       </div>
       <p className="px-6 text-sm text-center text-gray-400">
         Don't have an account yet?{" "}
-        <a href="#" to="/register" className="hover:underline text-gray-600">
-          Sign up
-        </a>
+        <Link to="/login" className="hover:underline text-gray-600">
+          Sign in
+        </Link>
       </p>
     </section>
   );
