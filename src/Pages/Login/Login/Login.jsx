@@ -1,10 +1,12 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const { signIn } = useContext(AuthContext);
   const { providerLogin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,9 +23,13 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        setError("");
         navigate("/course");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   const handleGoogleSignIn = () => {
@@ -90,9 +96,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <div className="space-y-1">
-          {/* <p className="text-xs  text-gray-400">Forgot password?</p> */}
-        </div>
+        <div className="space-y-1 text-red-700">{error}</div>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
           <p className="px-3 text-sm dark:text-gray-400">

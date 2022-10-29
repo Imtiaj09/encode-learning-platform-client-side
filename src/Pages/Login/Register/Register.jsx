@@ -1,8 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Register = () => {
+  const [error, setError] = useState("");
   const { createUser } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -18,9 +20,13 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError("");
         form.reset();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   return (
@@ -90,6 +96,7 @@ const Register = () => {
           </div>
         </fieldset>
       </form>
+      <div className="space-y-1 text-red-700">{error}</div>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         <p className="px-3 text-sm dark:text-gray-400">
