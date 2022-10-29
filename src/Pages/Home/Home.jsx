@@ -14,20 +14,12 @@ const Home = () => {
             Reach Goals & Success To Become Reliable With EnCode
           </p>
           <div className="flex flex-wrap justify-center">
-            <Link to="/login">
+            <Link to="/course">
               <button
                 type="button"
                 className="px-8 py-3 m-2 text-lg font-semibold rounded-full  bg-gray-800 hover:bg-gray-700 text-gray-50"
               >
-                Login
-              </button>
-            </Link>
-            <Link to="/register">
-              <button
-                type="button"
-                className="px-8 py-3 m-2 text-lg border rounded-full border-gray-700 text-gray-900"
-              >
-                Register
+                Explore Courses
               </button>
             </Link>
           </div>

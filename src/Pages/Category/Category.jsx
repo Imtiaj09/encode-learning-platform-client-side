@@ -1,5 +1,8 @@
 import React from "react";
+import { FaDownload, FaLongArrowAltRight } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const Category = () => {
   const category = useLoaderData();
@@ -14,9 +17,18 @@ const Category = () => {
         <h2 className="card-title">{title}</h2>
         <p>{details}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Download</button>
+          <Pdf targetRef={ref} filename="code-example.pdf">
+            {({ toPdf }) => (
+              <button onClick={toPdf} className="btn btn-primary">
+                <FaDownload />
+              </button>
+            )}
+          </Pdf>
           <Link to={`/course/${_id}`}>
-            <button className="btn btn-primary">Check Out</button>
+            <button className="btn btn-primary">
+              Check Out
+              <FaLongArrowAltRight />
+            </button>
           </Link>
         </div>
       </div>
