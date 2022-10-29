@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../../Card/Card";
-import Category from "../../Category/Category";
 
 const LeftSideCategoryNav = () => {
   const [categories, setCategories] = useState([]);
@@ -15,7 +14,7 @@ const LeftSideCategoryNav = () => {
   }, []);
 
   return (
-    <div className=" grid lg:grid-cols-[2fr_5fr] border ">
+    <div className=" grid lg:grid-cols-[2fr_5fr] ">
       <div>
         <h4 className="text-2xl">This All category: {categories.length}</h4>
         <div>
