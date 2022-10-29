@@ -1,12 +1,30 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const { providerLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const googleProvider = new GoogleAuthProvider();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        navigate("/course");
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
@@ -27,6 +45,7 @@ const Login = () => {
           </p>
         </div>
         <form
+          onSubmit={handleSubmit}
           noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -39,10 +58,10 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                id="email"
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
+                required
               />
             </div>
             <div>
@@ -57,6 +76,7 @@ const Login = () => {
                 id="password"
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900"
+                required
               />
             </div>
           </div>
